@@ -1,4 +1,4 @@
-PROJECT = assignment2b
+PROJECT = count
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Wextra
 SRC = main.cpp
