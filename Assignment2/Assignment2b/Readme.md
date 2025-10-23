@@ -8,4 +8,5 @@ Home assingment 2b - calculator. First read a string of numbers (operands) and o
 ## Build
 make
 ## Run
-./Сount
+
+./count
