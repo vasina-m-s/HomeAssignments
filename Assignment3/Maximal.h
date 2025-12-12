@@ -1,7 +1,7 @@
 /*
 * Marina Vasina
 * st140082@student.spbu.ru
-* Assignment3
+* Assignment4
 */
 
 #ifndef MAXIMAL_H
@@ -13,9 +13,18 @@ class Maximal: public Transformer {
     public:
         //constructor
         Maximal(const std::string &name, int level, int health, int speed, Battle battle, Gun* gun, const std::string &animal, int strength);
+	Maximal(const std::string &name, int level, int health, int speed, Battle battle, Gun* gun, const std::string &animal);
+	Maximal(const std::string &name, int level, int health, int speed, Battle battle, Gun* gun);
+	Maximal(const std::string &name, int level, int health, int speed, Battle battle);
+	Maximal(const std::string &name, int level, int health, int speed);
+	Maximal(const std::string &name, int level, int health);
+	Maximal(const std::string &name, int level);
+	Maximal(const std::string &name);
 
         //methods
-        bool transformBeast();
+        virtual bool transformBeast();
+	bool move() override;
+    	void transform() override;
 
         //getters
         std::string getAnimal() const;
@@ -24,6 +33,8 @@ class Maximal: public Transformer {
         //setters
         void setAnimal(const std::string &animal);
         void setStrength(int strength);
+
+	friend std::ostream& operator<<(std::ostream &os, Maximal &m);
 
     private:
         std::string _animal;
