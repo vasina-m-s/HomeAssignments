@@ -1,26 +1,27 @@
 /*
 * Marina Vasina
 * st140082@student.spbu.ru
-* Assignment3
+* Assignment4
 */
 
 #ifndef TRANSFORMER_H
 #define TRANSFORMER_H
 
 #include <string>
+#include <ostream>
 #include "Battle.h"
 #include "Gun.h"
 
 
 class Transformer {
 	public: //constructor and destructor
-        	Transformer(const std::string &name, int level, int health, int speed, Battle battle, Gun* gun);
-        	~Transformer();
+        	Transformer(const std::string &name = "unknown", int level = 0, int health = 100, int speed = 1, Battle battle = Battle(), Gun* gun = nullptr);
+        	virtual ~Transformer();
 
         	//Methods
-        	bool move();
-        	bool fire();
-        	bool transform();
+        	virtual bool move();
+        	virtual bool fire();
+        	virtual void transform() = 0; //purely virtual
 
         	//Getters
         	std::string getName() const;
@@ -36,6 +37,7 @@ class Transformer {
         	void setHealth(int health);
         	void setSpeed(int speed);
         	void setGun(Gun* gun);
+		friend std::ostream& operator<<(std::ostream &os, Transformer &t);
 
 	private:
         	//Fields

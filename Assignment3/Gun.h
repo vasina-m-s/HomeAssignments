@@ -11,7 +11,7 @@
 
 class Gun {
 	public: //constructor and destructor
-        	Gun(const std::string &model, int damage);
+        	Gun(const std::string &model = "Unknow", int damage = 0);
         	~Gun();
 
         	//Getters
