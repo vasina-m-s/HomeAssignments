@@ -30,12 +30,13 @@ Methods: transformBeast()
 make
 ## Test
 make test
-##Test command
+## Test command
 ./tests
 
-\##clean
+## clean
 
 make clean
+
 
 
 
