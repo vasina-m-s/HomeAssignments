@@ -111,7 +111,7 @@ TEST(MatrixTest, Transpose)
 }
 
 
-TEST(MatrixTest, RationalType) {
+TEST(MatrixRational, RationalType) {
 	Matrix<Rational> m(2, 2);
 	m(0, 0) = Rational(1, 2);    
 	m(0, 1) = Rational(2, 3);    
@@ -127,6 +127,53 @@ TEST(MatrixTest, RationalType) {
     	EXPECT_EQ(t(1, 0), Rational(2, 3));
     	EXPECT_EQ(t(1, 1), Rational(4, 5));
 }
+
+TEST(MatrixRational, Addition) {
+	Matrix<Rational> A(2, 2);
+	A(0, 0) = Rational(1, 2);    
+	A(0, 1) = Rational(2, 3);    
+	A(1, 0) = Rational(3, 4);    
+	A(1, 1) = Rational(4, 5);
+
+	Matrix<Rational> B(2, 2);
+	B(0, 0) = Rational(1, 2);    
+	B(0, 1) = Rational(2, 3);    
+	B(1, 0) = Rational(6, 8);    
+	B(1, 1) = Rational(4, 5);     
+
+    	Matrix<Rational> C = A + B;
+
+    	EXPECT_EQ(C(0, 0), Rational(1, 1));
+    	EXPECT_EQ(C(0, 1), Rational(4, 3));
+    	EXPECT_EQ(C(1, 0), Rational(3, 2));
+    	EXPECT_EQ(C(1, 1), Rational(8, 5));
+}
+
+
+TEST(RationalTest, Multiplication)
+{
+    Rational a(2, 3);
+    Rational b(3, 4);
+    Rational c = a * b;
+    EXPECT_EQ(c, Rational(1, 2));
+}
+
+TEST(MatrixRational, Scalar)
+{
+    	Matrix<Rational> m(2, 2);
+    	m(0, 0) = Rational(1, 2);
+    	m(0, 1) = Rational(2, 3);
+    	m(1, 0) = Rational(4, 7);
+    	m(1, 1) = Rational(1, 3);
+
+    	Matrix<Rational> result = m * Rational(3, 2);
+
+    	EXPECT_EQ(result(0, 0), Rational(3, 4));
+    	EXPECT_EQ(result(0, 1), Rational(1, 1));
+    	EXPECT_EQ(result(1, 0), Rational(6, 7));
+    	EXPECT_EQ(result(1, 1), Rational(3, 6));
+}
+
 
 TEST(RationalTest, Invariant) {
     Rational r1(4, 8);
