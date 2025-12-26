@@ -1,7 +1,7 @@
 /*
 * Marina Vasina
 * st140082@student.spbu.ru
-* Assignment3
+* Assignment4
 */
 
 #include "Transformer.h"
@@ -15,9 +15,18 @@ Transformer::Transformer(const std::string &name, int level, int health, int spe
 Transformer::~Transformer() {}
 
 
-bool Transformer::move() { return true; }
-bool Transformer::fire() { return true; }
-bool Transformer::transform() { return true; }
+bool Transformer::move()
+{
+	std::cout << "move() \n";
+	return true;
+}
+
+bool Transformer::fire()
+{
+	std::cout << "fire()\n";
+	return true;
+}
+
 
 void Transformer::setName(const std::string &name) { _name = name; }
 std::string Transformer::getName() const { return _name; }
@@ -35,3 +44,20 @@ void Transformer::setGun(Gun* gun) { _gun = gun; }
 Gun* Transformer::getGun() { return _gun; }
 
 Battle Transformer::getBattle() { return _battle; }
+
+std::ostream& operator<<(std::ostream &os, Transformer &t)
+{
+    	os << "Transformer: " << t.getName()
+	   << " level = " << t.getLevel()
+           << " Health = " << t.getHealth()
+           << " speed = " << t.getSpeed();
+    if (t.getGun())
+    {
+        os << " Gun = " << t.getGun()->getModel() << "(" << t.getGun()->getDamage() << ")";
+    }
+    else
+    {
+        os << " Gun = null";
+    }
+    return os;
+}
